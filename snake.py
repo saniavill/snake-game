@@ -1,7 +1,7 @@
 import pygame as pg
 from pygame.math import Vector2
 import sys
-
+# import the pciture of food and add it to the class and continue with the game
 pg.init()
 bg_color = (173, 204, 96)
 size_of_cells = 25
