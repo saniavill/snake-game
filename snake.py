@@ -17,10 +17,12 @@ class Food:
         self.position = Vector2(5, 6)
     def draw_food(self):
         food = pg.Rect(self.position.x * size_of_cells, self.position.y * size_of_cells, size_of_cells, size_of_cells)
-        pg.draw.rect(screen, (30, 120, 130), food)
+        #pg.draw.rect(screen, (30, 120, 130), food)
+        screen.blit(food_surface, food)
 
 
 food = Food()
+food_surface = pg.image.load('Chick.png')
 
 while True:
     for event in pg.event.get():
