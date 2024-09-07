@@ -5,7 +5,7 @@ import random
 # import the picture of food and add it to the class and continue with the game
 pg.init()
 font = pg.font.Font("Coolvetica Rg.ttf", 45)
-bg_color = (173, 204, 96)
+bg_color = (215, 226, 247)
 size_of_cells = 25
 num_of_cells = 20
 border_width = 75
@@ -45,7 +45,7 @@ class Snake:
     def draw_snake(self):
         for cell in self.body:
             one_cell = (border_width + cell.x * size_of_cells, border_width + cell.y * size_of_cells, size_of_cells, size_of_cells)
-            pg.draw.rect(screen, (63, 174, 211), one_cell, 0, 7)
+            pg.draw.rect(screen, (51, 206, 30), one_cell, 0, 7)
 
     def update_pos(self):
         if self.add_cell == True:
