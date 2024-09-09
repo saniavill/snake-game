@@ -5,7 +5,7 @@ import random
 # import the picture of food and add it to the class and continue with the game
 pg.init()
 font = pg.font.Font("Coolvetica Rg.ttf", 45)
-bg_color = (215, 226, 247)
+bg_color = (13, 13, 13)
 size_of_cells = 25
 num_of_cells = 20
 border_width = 75
@@ -21,7 +21,6 @@ class Food:
 
     def draw_food(self):
         food = pg.Rect(border_width + self.position.x * size_of_cells, border_width + self.position.y * size_of_cells, size_of_cells, size_of_cells)
-        #pg.draw.rect(screen, (30, 120, 130), food)
         screen.blit(food_surface, food)
 
     def random_cell(self):
@@ -78,8 +77,10 @@ class Game:
             self.is_head_touching_tail()
 
     def is_food_eaten(self):
+        food_surface = random.choice(foods)
         if self.snake.body[0] == self.food.position:
             self.food.position = self.food.initial_position(self.snake.body)
+            self.food.draw_food()
             self.snake.add_cell = True
 
     def is_snake_in_the_window(self):
@@ -99,7 +100,10 @@ class Game:
 
 
 game_loop = Game()
-food_surface = pg.transform.scale(pg.image.load('Chick.png'), (35, 35))
+foods = [pg.transform.scale(pg.image.load('1.png'), (40, 40)),
+         pg.transform.scale(pg.image.load('2.png'), (45, 45)),
+         pg.transform.scale(pg.image.load('3.png'), (45, 45))]
+food_surface = random.choice(foods)
 update = pg.USEREVENT
 pg.time.set_timer(update, 200)
 
@@ -125,9 +129,9 @@ while True:
 
     # drawings
     screen.fill(bg_color)
-    pg.draw.rect(screen, (0, 0, 0), (border_width-5, border_width-5, size_of_cells*num_of_cells + 10, size_of_cells*num_of_cells + 10), 5)
+    pg.draw.rect(screen, (235, 200, 230), (border_width-5, border_width-5, size_of_cells*num_of_cells + 10, size_of_cells*num_of_cells + 10), 3)
     game_loop.draw_objects()
-    font_render = font.render("SNAKE", True, (0, 0, 0))
+    font_render = font.render("SNAKE", True, (235, 200, 230))
     screen.blit(font_render, (border_width-5, 20))
     pg.display.update()
     clock.tick(60)
